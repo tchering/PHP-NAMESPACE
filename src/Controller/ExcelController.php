@@ -18,7 +18,7 @@ class ExcelController extends MyFct
     }
 
     //------------------------------------------
-    //! Here we have not model and need to insert data in excel file with heading and data
+    //! Here this function is used to create new excel file and insert data in it
     // function writeExcel()
     // {
     //     // $spreadSheet=new PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -65,7 +65,7 @@ class ExcelController extends MyFct
 
 
 
-    //! Here we have already model and need to only insert data in excel file
+    //! Here we have already excel model and need to only insert data in excel file
     function writeExcel()
     {
         // $spreadSheet=new PhpOffice\PhpSpreadsheet\Spreadsheet;

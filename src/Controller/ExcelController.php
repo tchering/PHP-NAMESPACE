@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\Client;
 use App\Model\ClientManager;
 use App\Service\MyFct;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -90,8 +91,8 @@ class ExcelController extends MyFct
             $nbre++;
             $row++;
         }
-        $a3=$sheet->getCell('A3')->getValue();
-        if($a3!=""){
+        $a3 = $sheet->getCell('A3')->getValue();
+        if ($a3 != "") {
             $sheet->removeRow(3);
         }
         $row = $row - 1;

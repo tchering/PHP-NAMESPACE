@@ -5,6 +5,7 @@ namespace App\Model;
 use PDO;
 use Exception;
 
+
 require_once("config/parametre.php");
 class Manager
 {

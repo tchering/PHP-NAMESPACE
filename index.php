@@ -6,7 +6,11 @@ if (!$_SESSION) {   //    la variable $_SESSION est encore vide ====  $_SESSION=
     $_SESSION['bg_navbar'] = 'bg_red';
 }
 require_once("src/Service/extra.php");
-spl_autoload_register('charger');
+
+//now since we have defined autoload in json and regenerated autoloader with composer dump-autoload now we dont need this
+// spl_autoload_register('charger');
+require("vendor/autoload.php");
+
 
 
 

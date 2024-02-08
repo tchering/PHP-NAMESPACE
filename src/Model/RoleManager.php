@@ -1,38 +1,40 @@
 <?php
-class ArticleManager extends Manager{
+namespace App\Model;
+use App\Model\Manager;
+class RoleManager extends Manager{
     public function findAllByCondition($dataCondition=[],$order='',$type='obj'){
-        return $this->findAllByConditionTable('article',$dataCondition,$order,$type);
+        return $this->findAllByConditionTable('role',$dataCondition,$order,$type);
     }
     public function findOneByCondition($dataCondition=[],$type='obj'){
-        return $this->findOneByConditionTable('article',$dataCondition,$type);
+        return $this->findOneByConditionTable('role',$dataCondition,$type);
     }
     public function search($columnLikes,$mot){
-        return $this->searchTable('article',$columnLikes,$mot);
+        return $this->searchTable('role',$columnLikes,$mot);
     }
     public function update($data,$id){
-        $this->updateTable('article',$data,$id);
+        $this->updateTable('role',$data,$id);
     }
     public function insert($data){
-        $this->insertTable('article',$data);
+        $this->insertTable('role',$data);
     }
     public function getDescribe(){
-        $resultat=$this->getDescribeTable('article');
+        $resultat=$this->getDescribeTable('role');
         return $resultat;
     }
     public function findById($id,$type="obj"){
-        $resultat=$this->findByIdTable('article',$id);
+        $resultat=$this->findByIdTable('role',$id);
         if($type=="obj"){
-            $objet=new Article($resultat);
+            $objet=new Role($resultat);
             return $objet;
         }else{
             return $resultat;
         }
     }
     public function deleteById($id){
-        $this->deleteByIdTable('article',$id);
+        $this->deleteByIdTable('role',$id);
     }
     public function findAll($order=''){
-        $resultat=$this->listTable('article',$order);
+        $resultat=$this->listTable('role',$order);
         return $resultat;
     }
     public function statisticVente(){

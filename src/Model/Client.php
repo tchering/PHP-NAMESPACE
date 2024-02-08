@@ -1,4 +1,6 @@
 <?php
+namespace App\Model;
+use App\Model\ClientManager; // here we dont need actually 
 class Client{
     private $id;
     private $numClient;

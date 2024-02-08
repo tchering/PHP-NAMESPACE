@@ -1,4 +1,10 @@
 <?php
+namespace App\Controller;
+use App\Service\MyFct;
+use App\Model\UserManager;
+use DateTime;
+use App\Model\RoleManager;
+use App\Model\User;
 class UserController extends MyFct
 {
     function __construct()

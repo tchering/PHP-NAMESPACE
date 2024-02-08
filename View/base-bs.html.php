@@ -14,28 +14,28 @@
 </head>
 
 <body>
+    <?php
+
+    use App\Service\MyFct; ?>
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-md <?=$_SESSION['bg_navbar']?> text-light fixed-top">
+        <nav class="navbar navbar-expand-md <?= $_SESSION['bg_navbar'] ?> text-light fixed-top">
             <a href="" class="btn"><i class="fa fa-laptop fa-2x text-light"></i></a>
-            <a href="#nav" class="btn bg-light navbar-toggler mx-2" data-bs-toggle="collapse"><i
-                    class="fa fa-bars"></i></a>
+            <a href="#nav" class="btn bg-light navbar-toggler mx-2" data-bs-toggle="collapse"><i class="fa fa-bars"></i></a>
             <div class="collapse navbar-collapse justify-content-between" id="nav">
                 <ul class="navbar-nav px-2">
                     <li class="nav-item"><a href="accueil" class="nav-link text-light fw-bold">Accueil</a></li>
-                    <?php  if(MyFct::isGranted('ROLE_DEPOT')): ?>
+                    <?php if (MyFct::isGranted('ROLE_DEPOT')) : ?>
                         <li class="nav-item"><a href="article" class="nav-link text-light fw-bold">Article</a></li>
                         <li class="nav-item"><a href="article-ajax.php" class="nav-link text-light fw-bold">Article-Ajax</a>
                         </li>
                         <li class="nav-item"><a href="client" class="nav-link text-light fw-bold">Client</a></li>
                     <?php endif; ?>
-                    <?php  if(MyFct::isGranted('ROLE_CAISSE')): ?>
-                        <li class="nav-item dropdown"><a href="" class="nav-link text-light fw-bold dropdown-toggle"
-                                data-bs-toggle="dropdown" data-bs-auto-close="outside">Commande</a>
+                    <?php if (MyFct::isGranted('ROLE_CAISSE')) : ?>
+                        <li class="nav-item dropdown"><a href="" class="nav-link text-light fw-bold dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Commande</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a href="" class="nav-link text-primary">Devis</a></li>
                                 <li class="nav-item"><a href="" class="nav-link text-primary">Facture</a></li>
-                                <li class="nav-item dropend"><a href="" class="nav-link text-primary dropdown-toggle"
-                                        data-bs-toggle="dropdown">Livraison</a>
+                                <li class="nav-item dropend"><a href="" class="nav-link text-primary dropdown-toggle" data-bs-toggle="dropdown">Livraison</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a href="" class="nav-link">Domicile</a></li>
                                         <li class="nav-item"><a href="" class="nav-link">Magasin</a></li>
@@ -46,9 +46,8 @@
                     <?php endif; ?>
                     <!-- <li class="nav-item"><a href="user" class="nav-link text-light fw-bold">User</a></li> -->
                     <!-- <li class="nav-item"><a href="" class="nav-link text-light fw-bold">Parametre</a></li> -->
-                    <?php if(MyFct::isGranted('ROLE_ADMIN')): ?>
-                        <li class="nav-item dropdown"><a href="" class="nav-link text-primary text-light fw-bold dropdown-toggle"
-                                data-bs-toggle="dropdown">Parametre</a>
+                    <?php if (MyFct::isGranted('ROLE_ADMIN')) : ?>
+                        <li class="nav-item dropdown"><a href="" class="nav-link text-primary text-light fw-bold dropdown-toggle" data-bs-toggle="dropdown">Parametre</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a href="user" class="nav-link">User</a></li>
                                 <li class="nav-item"><a href="role" class="nav-link">Role</a></li>
@@ -61,11 +60,9 @@
                 </ul>
                 <div action="">
                     <div class="input-group">
-                        <input autocomplete="off" onKeyDown="touche(event)" id="mot" name="mot" type="text"
-                            class="form-control mx-2" placeholder="Mot à chercher">
+                        <input autocomplete="off" onKeyDown="touche(event)" id="mot" name="mot" type="text" class="form-control mx-2" placeholder="Mot à chercher">
                         <a href="javascript:chercher()" class="btn bg-light"><i class="fa fa-search"></i></a>
-                        <a href="" class="mx-2 dropdown-toggle text-light" data-bs-toggle="dropdown"><i
-                                class="fa fa-bell text-light fa-2x"></i><sup class="text-light">(5)</sup></a>
+                        <a href="" class="mx-2 dropdown-toggle text-light" data-bs-toggle="dropdown"><i class="fa fa-bell text-light fa-2x"></i><sup class="text-light">(5)</sup></a>
                         <ul class="dropdown-menu w100 bg_green">
 
                             <li class="nav-item p-2 w-100">Message - 01</li>
@@ -76,17 +73,16 @@
                             <li class="nav-item p-2 w-100">Message - 06</li>
                         </ul>
 
-                        <?php if($_SESSION['username']!='user'): ?>          
+                        <?php if ($_SESSION['username'] != 'user') : ?>
                             <a href="" class=" dropdown-toggle text-light" data-bs-toggle="dropdown">
-                                <i class="fa fa-user fa-2x"></i><?=$_SESSION['username']?></a>
+                                <i class="fa fa-user fa-2x"></i><?= $_SESSION['username'] ?></a>
                             <ul class="dropdown-menu w100 bg_blue">
                                 <li class="nav-item w100 p-2"><a href="" class="nav-link">Compte</a></li>
                                 <li class="nav-item w100 p-2"><a href="" class="nav-link">Changement mot de passe</a></li>
                                 <li class="nav-item w100 p-2"><a href="user&action=logout" class="nav-link">Deconnexion</a></li>
                             </ul>
-                        <?php else :?>
-                            <a href="" class=" dropdown-toggle text-light" data-bs-toggle="dropdown"><i
-                                    class="fa fa-user fa-2x"></i>Visiteur</a>
+                        <?php else : ?>
+                            <a href="" class=" dropdown-toggle text-light" data-bs-toggle="dropdown"><i class="fa fa-user fa-2x"></i>Visiteur</a>
                             <ul class="dropdown-menu w100 bg_blue">
                                 <li class="nav-item w100 p-2"><a href="user&action=login" class="nav-link">Se connecter</a></li>
                                 <li class="nav-item w100 p-2"><a href="user&action=insert" class="nav-link">S'inscrire</a></li>
@@ -119,7 +115,7 @@
                 </ul>
             </div>
             <div id="section-bs" class="col-md-9 bg_green">
-                <?=$content?>
+                <?= $content ?>
             </div>
         </div>
         <footer class="my-2">

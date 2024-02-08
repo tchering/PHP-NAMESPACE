@@ -1,5 +1,6 @@
 <?php
-    class User extends UserManager{
+namespace App\Model;
+    class User{
 
         private $id;
         private $username;

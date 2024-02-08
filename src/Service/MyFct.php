@@ -1,5 +1,6 @@
 <?php
- 
+//created namespace
+ namespace App\Service;
 class MyFct{
     function notGranted($role_libelle){
         $granted=self::isGranted($role_libelle);  // comme isGranted est static alors on utilise self:: au lieu de $this->

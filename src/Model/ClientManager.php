@@ -1,4 +1,6 @@
 <?php
+namespace App\Model;
+use App\Model\Manager;
 class ClientManager extends Manager{
     public function findAllByCondition($dataCondition=[],$order='',$type='obj'){
         return $this->findAllByConditionTable('client',$dataCondition,$order,$type);

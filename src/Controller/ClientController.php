@@ -1,4 +1,7 @@
 <?php
+namespace App\Controller;
+use App\Service\MyFct;
+use App\Model\ClientManager;
 class ClientController extends MyFct{
     function __construct(){
         $action='list';

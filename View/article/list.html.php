@@ -1,17 +1,17 @@
 <style>
-
-    #tbody_art{
-        display:block;
-        width:100%;
-        height:125px;
-        overflow:auto;
+    #tbody_art {
+        display: block;
+        width: 100%;
+        height: 70vh;
+        overflow: auto;
     }
-    #thead_art,#tbody_art tr,#tfoot_art{
-        display:table;
-        width:100%;
-    }
-    
 
+    #thead_art,
+    #tbody_art tr,
+    #tfoot_art {
+        display: table;
+        width: 100%;
+    }
 </style>
 
 
@@ -32,26 +32,26 @@
 
         </tbody>
         <tfoot id="tfoot_art">
-                <tr class="bg_green">
-                    <th colspan="5" id="nbre_art" class="center">Nombre article ...</th>
-                </tr>
+            <tr class="bg_green">
+                <th colspan="5" id="nbre_art" class="center">Nombre article ...</th>
+            </tr>
         </tfoot>
     </table>
 
 </div>
 <script>
     //----------declation des données
-    let articles=<?=$articles?>;
+    let articles = <?= $articles ?>;
     console.log(articles);
 
     //------lancement des fonctions
     afficher(articles);
 
     //-------------Creation de mes fonctions-----
-    function afficher(articles){
-        const nbre=articles.length;
-        let html=articles.map(function(article){
-             return `
+    function afficher(articles) {
+        const nbre = articles.length;
+        let html = articles.map(function(article) {
+            return `
                     <tr>
                         <td class="w10 text-center">${article.id}</td>
                         <td class="w10">${article.numArticle}</td>
@@ -66,10 +66,9 @@
              `
         }).join('');
         console.log(html);
-        tbody_art.innerHTML=html;
-        nbre_art.innerHTML="Nombre d'articles : "+nbre;
-        tbody_art.scrollTop=tbody_art.scrollHeight;
+        tbody_art.innerHTML = html;
+        nbre_art.innerHTML = "Nombre d'articles : " + nbre;
+        tbody_art.scrollTop = tbody_art.scrollHeight;
 
     }
-
 </script>

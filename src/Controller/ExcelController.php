@@ -102,13 +102,5 @@ class ExcelController extends MyFct
         // $writer->save('Export table Client.xlsx');
         echo "Exportation réussie";
         die;
-
-
-
-        $sheet->setCellValue("A1", "Bonjour les DWWM");
-
-        $writer = new Xlsx($spreadsheet);
-        // $writer->save('ExcelTest.Xlsx');
-        $writer->save('Public/upload/ExcelTest.Xlsx');
     }
 }

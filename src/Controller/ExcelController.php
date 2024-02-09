@@ -14,9 +14,9 @@ class ExcelController extends MyFct
 {
     function __construct()
     {
-        // $this->readExcel();
+        $this->readExcel();
 
-        $this->writeExcel();    //to write excel
+        // $this->writeExcel();    //to write excel
     }
 
     function readExcel()
@@ -24,13 +24,14 @@ class ExcelController extends MyFct
         $spreadsheet = IOFactory::load("Public/maj-table/article.xlsx");
         $sheet = $spreadsheet->getActiveSheet();
         $articles = $sheet->toArray();
+  
         $am = new ArticleManager();
 
-        foreach ($articles as $key => $article) {
+        foreach ($articles as $key => $value) {
             if ($key != 0) {
-                $numArticle = $article[1];
-                $designation = $article[2];
-                $prixUnitaire = $article[3];
+                $numArticle = $value[1];
+                $designation = $value[2];
+                $prixUnitaire = $value[3];
 
                 // Skip this iteration if $numArticle is null
                 if ($numArticle === null) {
@@ -64,7 +65,7 @@ class ExcelController extends MyFct
     //     // $spreadSheet=new PhpOffice\PhpSpreadsheet\Spreadsheet;
     //     //exportation de la table client. N° Nom Adresse 
 
-    //     $spreadsheet = IOFactory::load('Public/modele-document/article.Xlsx');
+    //     $spreadsheet = IOFactory::load('Public/modele-document/value.Xlsx');
     //     $sheet = $spreadsheet->getActiveSheet();
     //     $row = 4; //ligne de depart dans fichier Excel
     //     $cm = new ClientManager();
@@ -97,7 +98,7 @@ class ExcelController extends MyFct
     // }
 
 
-//! This  function is to export articles from database to excel.
+    //! This  function is to export articles from database to excel.
     function writeExcel()
     {
         $spreadsheet = IOFactory::load('Public/modele-document/article.Xlsx');

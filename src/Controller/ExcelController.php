@@ -14,9 +14,9 @@ class ExcelController extends MyFct
 {
     function __construct()
     {
-        $this->readExcel();
+        // $this->readExcel();
 
-        // $this->writeExcel();    //to write excel
+        $this->writeExcel();    //to write excel
     }
 
     function readExcel()
@@ -59,27 +59,64 @@ class ExcelController extends MyFct
     }
     //------------------------------------------
     //! Here we have already excel model and need to only insert data in excel file
+    // function writeExcel()
+    // {
+    //     // $spreadSheet=new PhpOffice\PhpSpreadsheet\Spreadsheet;
+    //     //exportation de la table client. N° Nom Adresse 
+
+    //     $spreadsheet = IOFactory::load('Public/modele-document/article.Xlsx');
+    //     $sheet = $spreadsheet->getActiveSheet();
+    //     $row = 4; //ligne de depart dans fichier Excel
+    //     $cm = new ClientManager();
+    //     $client = $cm->findAll();
+    //     $nbre = 0;
+    //     foreach ($client as $client) {
+    //         extract($client);
+    //         $sheet->insertNewRowBefore($row);
+
+    //         // $numClient = $client['numClient'];
+    //         // $nomClient = $client['nomClient'];
+    //         // $adresseClient = $client['adresseClient'];
+    //         $sheet->setCellValue("A$row", $numClient);
+    //         $sheet->setCellValue("B$row", $nomClient);
+    //         $sheet->setCellValue("C$row", $adresseClient);
+    //         $nbre++;
+    //         $row++;
+    //     }
+    //     $a3 = $sheet->getCell('A3')->getValue();
+    //     if ($a3 != "") {
+    //         $sheet->removeRow(3);
+    //     }
+    //     $row = $row - 1;
+    //     $sheet->setCellValue("A$row", "Nombre Clients = $nbre");
+    //     $writer = new Xlsx($spreadsheet);
+    //     $writer->save('Public/upload/Export n table Client.xlsx');
+    //     // $writer->save('Export table Client.xlsx');
+    //     echo "Exportation réussie";
+    //     die;
+    // }
+
+
+//! This  function is to export articles from database to excel.
     function writeExcel()
     {
-        // $spreadSheet=new PhpOffice\PhpSpreadsheet\Spreadsheet;
-        //exportation de la table client. N° Nom Adresse 
-
-        $spreadsheet = IOFactory::load('Public/modele-document/test.Xlsx');
+        $spreadsheet = IOFactory::load('Public/modele-document/article.Xlsx');
         $sheet = $spreadsheet->getActiveSheet();
         $row = 4; //ligne de depart dans fichier Excel
-        $cm = new ClientManager();
-        $client = $cm->findAll();
+        $cm = new ArticleManager();
+        $article = $cm->findAll();
         $nbre = 0;
-        foreach ($client as $client) {
-            extract($client);
+        foreach ($article as $article) {
+            extract($article);
             $sheet->insertNewRowBefore($row);
 
-            // $numClient = $client['numClient'];
-            // $nomClient = $client['nomClient'];
-            // $adresseClient = $client['adresseClient'];
-            $sheet->setCellValue("A$row", $numClient);
-            $sheet->setCellValue("B$row", $nomClient);
-            $sheet->setCellValue("C$row", $adresseClient);
+            // $numClient = $article['numClient'];
+            // $nomClient = $article['nomClient'];
+            // $adresseClient = $article['adresseClient'];
+            $sheet->setCellValue("A$row", $id);
+            $sheet->setCellValue("B$row", $numArticle);
+            $sheet->setCellValue("C$row", $designation);
+            $sheet->setCellValue("D$row", $prixUnitaire);
             $nbre++;
             $row++;
         }
@@ -88,9 +125,10 @@ class ExcelController extends MyFct
             $sheet->removeRow(3);
         }
         $row = $row - 1;
-        $sheet->setCellValue("A$row", "Nombre Clients = $nbre");
+        $sheet->setCellValue("A$row", "Nombre Article = $nbre");
         $writer = new Xlsx($spreadsheet);
-        $writer->save('Public/upload/Export n table Client.xlsx');
+        // $writer->save('Public/upload/Export n table Client.xlsx');
+        $writer->save('Public/modele-document/article.Xlsx');
         // $writer->save('Export table Client.xlsx');
         echo "Exportation réussie";
         die;
@@ -99,7 +137,7 @@ class ExcelController extends MyFct
     // function writeExcel()
     // {
     //     // $spreadSheet=new PhpOffice\PhpSpreadsheet\Spreadsheet;
-    //     //exportation de la table client. N° Nom Adresse 
+    //     //exportation de la table article. N° Nom Adresse 
 
     //     $spreadsheet = new Spreadsheet();
     //     $sheet = $spreadsheet->getActiveSheet();

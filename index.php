@@ -25,7 +25,7 @@ extract($_GET);
 //     $page = new $nameController();
 // } else {
 //     $myFct = new App\Service\MyFct;
-//     $file = "View/erreur/erreur.html.php";
+//     $file = "View/erreur/erreur.html.php";+
 //     $message = "Le fichier $fileController n'existe pas!";
 //     $variables = ['message' => $message];
 //     $myFct->generatePage($file, $variables);
